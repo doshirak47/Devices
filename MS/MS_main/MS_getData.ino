@@ -39,7 +39,6 @@ void setup_topic(){//mqtt_client.subscribe(String(id)+"/");
 }
 
 void setup_external(){
-  //pinMode(PIN,OUTPUT);
    if (! sgp.begin()){
     Serial.println("Sensor not found :(");
     while (1);
