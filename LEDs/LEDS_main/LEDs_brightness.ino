@@ -3,7 +3,7 @@
 void call(String& top, String& val){//if(top == device_name + "/"){};
   if(top == device_name + "/light"){
     int v = val.toInt();
-    if((v >= 0)&&(v<=PWM_R){
+    if((v >= 0)&&(v<=PWM_R)){
       analogWriteRange(PWM_R);
       analogWrite(PIN, v);
     }
