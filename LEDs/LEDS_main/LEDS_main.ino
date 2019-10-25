@@ -3,16 +3,16 @@
 #include <WiFiClient.h>
 #include <PubSubClient.h>           //https://github.com/Imroy/pubsubclient
 
-const char *id = "003";
+const char *id = "L01";
 
 const char *ssid = "MikroTik-7931DC"; // Имя роутера
 const char *password = ""; // Пароль роутера
 
 #if MQTT_CLIENT_TEST == 1
-String mqtt_server = "m11.cloudmqtt.com"; // Имя сервера MQTT
-int mqtt_port = 11708; // Порт для подключения к серверу MQTT
-String mqtt_user = "ddzdsmmr"; // Логин для подключения к серверу MQTT
-String mqtt_pass = "9J1XyqzqSLc_"; // Пароль для подключения к серверу MQTT 
+String mqtt_server = "farmer.cloudmqtt.com"; // Имя сервера MQTT
+int mqtt_port = 14626; // Порт для подключения к серверу MQTT
+String mqtt_user = "fjllmrfi"; // Логин для подключения к серверу MQTT
+String mqtt_pass = "XLnuQ-oklxeP"; // Пароль для подключения к серверу MQTT 
 #else
 IPAddress mqtt_server(192, 168, 88, 98);
 int mqtt_port = 1024; // Порт для подключения к серверу MQTT
@@ -86,7 +86,6 @@ void loop(void){
   if (WiFi.status() == WL_CONNECTED) {
      if (mqtt_client.connected()){
          mqtt_client.loop();
-         main();
       }else{
         Serial.println("MQTT Error, try reconect:"); 
         setup_mqtt();
