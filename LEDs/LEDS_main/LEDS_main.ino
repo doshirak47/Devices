@@ -21,7 +21,6 @@ String mqtt_pass = "9J1XyqzqSLc_"; // Пароль для подключения
 #endif
 
 String device_name = id;//имя  device_name
-String device_type = "no_type";
 
 WiFiClient WiFi_client; 
 PubSubClient mqtt_client(WiFi_client, mqtt_server, mqtt_port);
