@@ -13,12 +13,15 @@ void call(String& top, String& val){//if(top == device_name + "/"){};
     set_brightness(val,0);
     mqtt_client.publish(top + "/response",val);
   }
-  if(top == device_name + L2)
+  if(top == device_name + L2){
     set_brightness(val,1);
+    mqtt_client.publish(top + "/response",val);
+  }
 }
 void set_brightness(String& val, int pin){
   int v = val.toInt();
   int cur = pin?curValue2:curValue1;
+  if(cur==v)return;
   int step = (v-cur>0)?1:-1;
   if((v >= 0)&&(v<=PWM_R)){
     analogWriteRange(PWM_R);
@@ -27,7 +30,8 @@ void set_brightness(String& val, int pin){
       analogWrite(pin?PIN2:PIN1, cur);
       delay(5);
     }
-    pin?curValue2:curValue1 = cur;
+    if(pin)curValue2 = cur;
+    else curValue1 = cur;
   }
 }
 
