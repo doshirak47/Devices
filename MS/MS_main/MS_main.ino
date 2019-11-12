@@ -12,7 +12,7 @@ const char *password = ""; // Пароль роутера
 String mqtt_server = "farmer.cloudmqtt.com"; // Имя сервера MQTT
 int mqtt_port = 14626; // Порт для подключения к серверу MQTT
 String mqtt_user = "fjllmrfi"; // Логин для подключения к серверу MQTT
-String mqtt_pass = "XLnuQ-oklxeP"; // Пароль для подключения к серверу MQTT 
+String mqtt_pass = "EFRUJQ1S0Dmt"; // Пароль для подключения к серверу MQTT 
 #else
 IPAddress mqtt_server(192, 168, 88, 98);
 int mqtt_port = 1024; // Порт для подключения к серверу MQTT
@@ -23,7 +23,8 @@ String mqtt_pass = "9J1XyqzqSLc_"; // Пароль для подключения
 String device_name = id;//имя  device_name
 String device_type = "no_type";
 
-WiFiClient WiFi_client; 
+WiFiClient WiFi_client;
+WiFiClient WiFi_client2;  
 PubSubClient mqtt_client(WiFi_client, mqtt_server, mqtt_port);
  
 
