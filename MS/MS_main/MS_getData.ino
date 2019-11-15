@@ -64,6 +64,7 @@ void setup_external(){
   epd_wakeup(wake_up);
   epd_clear();
   epd_set_memory(MEM_NAND);
+  epd_set_en_font(ASCII48);
 }
 
 uint32_t getAbsoluteHumidity(float temperature, float humidity) {
@@ -131,21 +132,21 @@ String WeatherDisplay(){
   char * out = strtok(icon,"-");        // Выделяем первую часть из строки до символа '-'
   while (out != NULL) {                 // Выделяем последующие части строки в цикле, пока значение out не станет нулевым (пустым)
       if (String(out) == "skc")         // Перебираем в условиях все возможные варианты, зашифрованные в названии иконки
-        return("Yasno");
+        return(" Yasno  ");
       else if (String(out) == "ovc")
         return("Pasmurno");
       else if (String(out) == "bkn")
         return("Oblachno");
       else if (String(out) == "ra")
-        return("Dozhd'");
+        return(" Dozhd' ");
       else if (String(out) == "ts")
-        return("Groza");
+        return(" Groza  ");
       else if (String(out) == "sn")
-        return("Sneg");
+        return("  Sneg  ");
       else if (String(out) == "bl")
-        return("Metel'");
+        return(" Metel' ");
       else if (String(out) == "fg")
-        return("Tuman");
+        return(" Tuman  ");
       else if (String(out) == "n")
         return("\nTemnoe vremya sutok");
       else if (String(out) == "d")
@@ -185,10 +186,11 @@ void draw_text(String t, String h, String c, String p, String ti, String w)
   
   char buf6[w.length()+1];
   w.toCharArray(buf6,w.length()+1);
-  epd_disp_string(buf6, 360, 130);
-  
-  
+  epd_disp_string(buf6, 340, 130);
+
+  epd_disp_bitmap("RAIN.BMP",360, 200);
   epd_udpate();
+
   delay(5000);
 }
 
